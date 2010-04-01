@@ -1,0 +1,35 @@
+<?xml version="1.1.1"?>
+<tool name="SimpleGlobalFitter" id="hyphy_simple_global_filter">
+    <description>Simple Global Fitter</description>
+    <command interpreter="python">simple_global_fitter.py $input $output "$code" ${GALAXY_DATA_INDEX_DIR}</command>
+    <inputs>
+        <page>
+            <param format="fasta" name="input" type="data" label="Fasta file"/>
+            <param name="code" type="select" label="Genetic code">
+                <option value="Universal">Universal</option>
+                <option value="Vertebrate mtDNA">Vertebrate mtDNA</option>
+                <option value="Yeast mtDNA">Yeast mtDNA</option>
+                <option value="Mold/Protozoan mtDNA">Mold/Protozoan mtDNA</option>
+                <option value="Invertebrate mtDNA">Invertebrate mtDNA</option>
+                <option value="Ciliate Nuclear">Ciliate Nuclear</option>
+                <option value="Echinoderm mtDNA">Echinoderm mtDNA</option>
+                <option value="Euplotid Nuclear">Euplotid Nuclear</option>
+                <option value="Alt. Yeast Nuclear">Alt. Yeast Nuclear</option>
+                <option value="Ascidian mtDNA">Ascidian mtDNA</option>
+                <option value="Flatworm mtDNA">Flatworm mtDNA</option>
+                <option value="Blepharisma Nuclear">Blepharisma Nuclear</option>
+            </param>
+        </page>
+    </inputs>
+    <outputs>
+        <data name="output" format="tabular" />
+    </outputs>
+    <tests>
+      <test>
+      </test>
+    </tests>
+    <help>
+    SimpleGlobalFitter
+    </help>
+</tool>
+
