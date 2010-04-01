@@ -1,7 +1,7 @@
 <?xml version="1.1.1"?>
 <tool name="SimpleGlobalFitter" id="hyphy_simple_global_filter">
     <description>Simple Global Fitter</description>
-    <command interpreter="python">simple_global_fitter.py $input $output "$code" ${GALAXY_DATA_INDEX_DIR}</command>
+    <command interpreter="python">simple_global_fitter.py $input $output "$code" "$model" ${GALAXY_DATA_INDEX_DIR}</command>
     <inputs>
         <page>
             <param format="fasta" name="input" type="data" label="Fasta file"/>
@@ -19,6 +19,11 @@
                 <option value="Flatworm mtDNA">Flatworm mtDNA</option>
                 <option value="Blepharisma Nuclear">Blepharisma Nuclear</option>
             </param>
+            <param name="model" type="select" label="Substitution Model">
+                <option value="010010">HKY85</option>
+                <option value="000000">F81</option>
+                <option value="012345">REV</option>
+            </param>
         </page>
     </inputs>
     <outputs>
@@ -26,10 +31,11 @@
     </outputs>
     <tests>
       <test>
+        <!-- tests here -->
       </test>
     </tests>
     <help>
-    SimpleGlobalFitter
+    SimpleGlobalFitter help here
     </help>
 </tool>
 

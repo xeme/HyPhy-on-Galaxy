@@ -5,7 +5,7 @@ from galaxy.tools.util import hyphy_util
 
 
 #Maybe it's better to put this into galaxy.tools.util.hyphy_util like similar stuff
-def get_simple_global_fitter_config_filename(input_filename, output_filename, code, bf_file):
+def get_simple_global_fitter_config_filename(input_filename, output_filename, code, model, bf_file):
     contents = """
 _genomeScreenOptions = {};
 
@@ -27,11 +27,11 @@ _genomeScreenOptions ["04"] = "%s";
 /* options for the analysis */
 _genomeScreenOptions ["05"] = "%s";
 /* genetic code */
-_genomeScreenOptions ["06"] = "010010";
+_genomeScreenOptions ["06"] = "%s";
 /* nucleotide bias string; can define any of the 203 models */
 
 ExecuteAFile ("%s", _genomeScreenOptions);
-""" % (input_filename, output_filename, code, bf_file)
+""" % (input_filename, output_filename, code, model, bf_file)
     return hyphy_util.get_filled_temp_filename(contents)
 
 
@@ -48,16 +48,17 @@ bf_file = os.path.dirname(__file__) + "/GenomeFitters/DataReaders/FastaReader.bf
 input_filename = os.path.abspath(sys.argv[1].strip())
 output_filename = os.path.abspath(sys.argv[2].strip())
 code = sys.argv[3].strip()
+model = sys.argv[4].strip()
 
 #setup Config file
-config_filename = get_simple_global_fitter_config_filename(input_filename, output_filename, code, bf_file)
+config_filename = get_simple_global_fitter_config_filename(input_filename, output_filename, code, model, bf_file)
 
 #Run Hyphy
 hyphy_cmd = "%s BASEPATH=%s USEPATH=/dev/null %s" % (HYPHY_EXECUTABLE, HYPHY_PATH, config_filename)
 hyphy = os.popen(hyphy_cmd, 'r')
-print hyphy.read()
+#print hyphy.read()
 hyphy.close()
 
 #remove temporary files
-#os.unlink(config_filename)
+os.unlink(config_filename)
 
