@@ -1,0 +1,10 @@
+This is just a sample implementation.
+
+
+INSTALATION
+
+1. put files into galaxy_dir/tools/hyphy2/
+2. add this to galaxy_dir/tool_conf.xml
+    <section name="HyPhySample" id="hyphy2">
+        <tool file="hyphy2/simple_global_fitter.xml" />
+    </section>
